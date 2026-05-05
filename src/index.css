@@ -20,30 +20,42 @@
   --font-display: "Fraunces", "Times New Roman", serif;
   --font-body: "Geist", "Helvetica Neue", system-ui, sans-serif;
 
-  /* Typography Settings */
+  /* Fonts Variation */
   --font-variation-display: "SOFT" 50, "WONK" 0, "opsz" 144;
+  
+  /* Animations */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
   body {
-    @apply bg-primary text-paper font-body antialiased selection:bg-secondary selection:text-white;
+    @apply bg-primary text-paper font-body antialiased selection:bg-secondary selection:text-white overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-display tracking-tight text-balance;
     font-variation-settings: var(--font-variation-display);
   }
 }
 
 @layer utilities {
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
   .t-display-xl {
-    @apply text-[clamp(3.5rem,8vw,7.5rem)] leading-[0.95] tracking-[-0.03em] font-normal font-display;
+    @apply text-[clamp(4rem,10vw,9rem)] leading-[0.85] tracking-[-0.04em] font-normal font-display;
   }
   .t-display-l {
-    @apply text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] tracking-[-0.02em] font-normal font-display;
+    @apply text-[clamp(2.5rem,6vw,5rem)] leading-[1] tracking-[-0.02em] font-normal font-display;
   }
   .t-heading-m {
-    @apply text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] tracking-[-0.01em] font-display;
+    @apply text-[clamp(1.75rem,4vw,2.75rem)] leading-[1.1] tracking-[-0.01em] font-display;
   }
   .t-eyebrow {
     @apply text-[0.75rem] tracking-[0.18em] uppercase font-medium font-body;
@@ -56,5 +68,17 @@
   }
   .t-body-s {
     @apply text-[0.875rem] leading-[1.6] font-body;
+  }
+
+  .mask-up {
+    mask-image: linear-gradient(to bottom, black 0%, black 100%);
+    mask-size: 100% 0%;
+    mask-repeat: no-repeat;
+    mask-position: bottom;
+    transition: mask-size 1.2s var(--ease-expo);
+  }
+
+  .mask-up.active {
+    mask-size: 100% 100%;
   }
 }

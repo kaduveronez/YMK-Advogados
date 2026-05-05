@@ -137,27 +137,57 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-center pt-32 pb-20 overflow-hidden">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="t-eyebrow text-tertiary mb-12"
+          className="t-eyebrow text-tertiary mb-12 flex items-center gap-4"
         >
+          <span className="w-8 h-px bg-tertiary/30" />
           00 · YMK Advocacia
         </motion.div>
         
-        <div className="max-w-6xl">
+        <div className="max-w-6xl relative">
+          <div className="absolute -top-32 -left-32 w-64 h-64 opacity-20 pointer-events-none">
+            <AbstractGlyph className="w-full h-full rotate-12" />
+          </div>
+
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[40vw] h-[40vw] bg-secondary/5 rounded-full blur-[100px] pointer-events-none animate-pulse" />
+
           <motion.h1 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="t-display-xl mb-12"
+            className="t-display-xl mb-12 relative"
           >
-            Direito com precisão, <br />
-            <span className="italic">estratégia</span> e propósito.
+            <motion.span 
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-block relative z-10"
+            >
+              Direito com precisão,
+            </motion.span>
+            <br />
+            <motion.span 
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="italic pl-[10%] inline-block text-secondary relative z-20"
+            >
+              estratégia e propósito.
+            </motion.span>
+            
+            <motion.div 
+              animate={{ 
+                x: [0, 50, 0],
+                y: [0, -30, 0],
+              }}
+              transition={{ duration: 15, repeat: Infinity }}
+              className="absolute -right-20 top-0 w-40 h-40 border border-secondary/10 rounded-full hidden lg:block"
+            />
           </motion.h1>
 
           <motion.p 
@@ -165,10 +195,11 @@ const Hero = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="t-body-l text-text-muted max-w-[56ch] mb-16"
+            className="t-body-l text-text-muted max-w-[56ch] mb-16 border-l border-line pl-8"
           >
             Soluções jurídicas para casos que exigem profundidade analítica, sensibilidade política e leitura de contexto. Operamos no Direito Penal de defesa, em mercados emergentes e em agendas contemporâneas que reescrevem o que é possível dentro da lei.
           </motion.p>
+          {/* ... buttons ... */}
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -223,12 +254,12 @@ const Areas = () => {
     { 
       id: "03", 
       name: "Direito Público e Novos Mercados", 
-      desc: "Construção jurídica em setores em formação regulatória — cannabis, fintech, ativos digitais, ESG. Diálogo com agências reguladoras, ministérios e órgãos de controle." 
+      desc: "Construção jurídica em setores em formação regulatória: cannabis, fintech, ativos digitais, ESG. Diálogo com agências reguladoras, ministérios e órgãos de controle." 
     },
     { 
       id: "04", 
       name: "Direito Empresarial", 
-      desc: "Estruturação societária, contratos, fusões e contencioso empresarial — com ênfase em empresas que operam em cenários de complexidade regulatória ou pública." 
+      desc: "Estruturação societária, contratos, fusões e contencioso empresarial, com ênfase em empresas que operam em cenários de complexidade regulatória ou pública." 
     },
     { 
       id: "05", 
@@ -243,25 +274,28 @@ const Areas = () => {
   ];
 
   return (
-    <section id="areas" className="py-32">
-      <div className="container mx-auto px-6">
+    <section id="areas" className="py-32 relative overflow-hidden">
+      <div className="absolute right-0 top-1/4 w-96 h-96 opacity-10 blur-3xl bg-secondary rounded-full pointer-events-none" />
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="t-eyebrow text-tertiary mb-12"
+          className="t-eyebrow text-tertiary mb-12 flex items-center gap-4"
         >
-          01 — Áreas de Atuação
+          <span className="w-8 h-px bg-tertiary/30" />
+          01 · Áreas de Atuação
         </motion.div>
         
         <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="t-display-l mb-12"
         >
           O que fazemos.
         </motion.h2>
+        {/* ... */}
 
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -269,7 +303,7 @@ const Areas = () => {
           viewport={{ once: true }}
           className="t-body-l text-text-muted max-w-[60ch] mb-20"
         >
-          Atuamos em frentes que se conectam: a defesa penal técnica, a engenharia jurídica para mercados emergentes, e a articulação política em pautas que ainda estão sendo escritas. Não somos um escritório de volume — somos um escritório de profundidade.
+          Atuamos em frentes que se conectam: a defesa penal técnica, a engenharia jurídica para mercados emergentes, e a articulação política em pautas que ainda estão sendo escritas. Não somos um escritório de volume, somos um escritório de profundidade.
         </motion.p>
 
         <div className="grid grid-cols-1">
@@ -319,7 +353,7 @@ const About = () => {
               viewport={{ once: true }}
               className="t-eyebrow text-tertiary mb-12"
             >
-              02 — Sobre
+              02 · Sobre
             </motion.div>
           </div>
           
@@ -348,7 +382,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className="t-body-l text-paper/90"
               >
-                Nossa orientação é garantista. Operamos a partir da Constituição como bússola e da técnica como ferramenta — defendendo direitos individuais, articulando garantias processuais e enfrentando as zonas em que o sistema penal, o aparato regulatório ou o poder público pressionam o cidadão.
+                Nossa orientação é garantista. Operamos a partir da Constituição como bússola e da técnica como ferramenta: defendendo direitos individuais, articulando garantias processuais e enfrentando as zonas em que o sistema penal, o aparato regulatório ou o poder público pressionam o cidadão.
               </motion.p>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -397,7 +431,7 @@ const Method = () => {
     {
       num: "III",
       title: "Técnica como bússola",
-      desc: "Operamos com rigor doutrinário e atualização constante de jurisprudência. A técnica é o que sustenta a posição — não a retórica."
+      desc: "Operamos com rigor doutrinário e atualização constante de jurisprudência. A técnica é o que sustenta a posição, não a retórica."
     },
     {
       num: "IV",
@@ -415,7 +449,7 @@ const Method = () => {
           viewport={{ once: true }}
           className="t-eyebrow text-tertiary mb-12"
         >
-          03 — Método
+          03 · Método
         </motion.div>
         
         <motion.h2 
@@ -470,7 +504,7 @@ const Team = () => {
           viewport={{ once: true }}
           className="t-eyebrow text-tertiary mb-12"
         >
-          04 — Equipe
+          04 · Equipe
         </motion.div>
         
         <motion.h2 
@@ -543,7 +577,7 @@ const Emergency = () => {
           viewport={{ once: true }}
           className="t-eyebrow text-primary/60 mb-12"
         >
-          05 — Emergência 24h
+          05 · Emergência 24h
         </motion.div>
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -624,7 +658,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="t-eyebrow text-tertiary mb-12"
         >
-          06 — Contato
+          06 · Contato
         </motion.div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
@@ -651,7 +685,7 @@ const Contact = () => {
               <div className="flex flex-col gap-4">
                 <span className="t-eyebrow text-tertiary">Escritório</span>
                 <p className="t-body-m text-paper/80 leading-relaxed">
-                  Av. Brig. Faria Lima, 1826 — Conj. 710 <br />
+                  Av. Brig. Faria Lima, 1826, Conj. 710 <br />
                   Jardim Paulistano · São Paulo · SP <br />
                   CEP 01.451-908
                 </p>
@@ -822,7 +856,7 @@ const Footer = () => {
               Conteúdo informativo nos termos do Provimento 205/2021 do CFOAB.
             </p>
             <p className="t-body-s text-text-muted/40">
-              Site desenvolvido por Cloudwalk IP — <a href="https://kaduveronez.com" target="_blank" className="hover:text-secondary">kaduveronez.com</a>
+              Site desenvolvido por Cloudwalk IP · <a href="https://kaduveronez.com" target="_blank" className="hover:text-secondary">kaduveronez.com</a>
             </p>
           </div>
         </div>
@@ -865,24 +899,81 @@ const StickyActions = () => {
   );
 };
 
+const Noise = () => <div className="noise-overlay" />;
+
+const Atmosphere = () => (
+  <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <motion.div 
+      animate={{ 
+        scale: [1, 1.2, 1],
+        rotate: [0, 90, 0],
+        x: ["-10%", "10%", "-10%"],
+        y: ["-10%", "10%", "-10%"]
+      }}
+      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] bg-secondary/10 blur-[120px] rounded-full"
+    />
+    <motion.div 
+      animate={{ 
+        scale: [1.2, 1, 1.2],
+        rotate: [0, -90, 0],
+        x: ["10%", "-10%", "10%"],
+        y: ["10%", "-10%", "10%"]
+      }}
+      transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+      className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] bg-tertiary/10 blur-[120px] rounded-full"
+    />
+  </div>
+);
+
+const AbstractGlyph = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" className={cn("fill-none stroke-line/20", className)}>
+    <motion.circle 
+      cx="50" cy="50" r="45" 
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 2, ease: "easeInOut" }}
+    />
+    <motion.path 
+      d="M20 50 L80 50 M50 20 L50 80" 
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
+    />
+  </svg>
+);
+
 // --- Main App ---
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    // Artificial load to ensure fonts and layout are ready
     setIsReady(true);
   }, []);
 
   if (!isReady) return null;
 
   return (
-    <div className="relative">
+    <div className="relative bg-primary overflow-x-hidden">
+      <Noise />
+      <Atmosphere />
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <Hero />
+        
+        <div className="container mx-auto px-6 py-12 flex justify-center opacity-30">
+          <AbstractGlyph className="w-12 h-12" />
+        </div>
+
         <Areas />
+        
+        <div className="container mx-auto px-6 py-12 flex justify-end pr-32 opacity-20">
+          <AbstractGlyph className="w-24 h-24 rotate-45" />
+        </div>
+
         <About />
         <Method />
         <Team />
@@ -892,13 +983,13 @@ export default function App() {
       <Footer />
       <StickyActions />
 
-      {/* Smooth Scroll Utility for scroll-behavior and potential custom logic */}
       <style dangerouslySetInnerHTML={{ __html: `
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #14211c; }
         ::-webkit-scrollbar-thumb { background: #5a8080; }
         ::-webkit-scrollbar-thumb:hover { background: #99856f; }
+        .font-display { font-variation-settings: var(--font-variation-display); }
       `}} />
     </div>
   );
