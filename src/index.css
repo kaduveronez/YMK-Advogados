@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,soft,wonk,wght@9..144,0..100,0..1,400;500;600&family=Geist:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-primary: #14211c;
+  --color-primary-soft: #1a2924;
+  --color-primary-darker: #0d1813;
+  --color-secondary: #5a8080;
+  --color-tertiary: #99856f;
+  --color-paper: #d8dace;
+  
+  /* Functional Colors */
+  --color-line: rgba(216, 218, 206, 0.12);
+  --color-text-primary: #d8dace;
+  --color-text-muted: rgba(216, 218, 206, 0.65);
+  --color-accent: #5a8080;
+
+  /* Fonts */
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body: "Geist", "Helvetica Neue", system-ui, sans-serif;
+
+  /* Typography Settings */
+  --font-variation-display: "SOFT" 50, "WONK" 0, "opsz" 144;
+}
+
+@layer base {
+  body {
+    @apply bg-primary text-paper font-body antialiased selection:bg-secondary selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    font-variation-settings: var(--font-variation-display);
+  }
+}
+
+@layer utilities {
+  .t-display-xl {
+    @apply text-[clamp(3.5rem,8vw,7.5rem)] leading-[0.95] tracking-[-0.03em] font-normal font-display;
+  }
+  .t-display-l {
+    @apply text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] tracking-[-0.02em] font-normal font-display;
+  }
+  .t-heading-m {
+    @apply text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] tracking-[-0.01em] font-display;
+  }
+  .t-eyebrow {
+    @apply text-[0.75rem] tracking-[0.18em] uppercase font-medium font-body;
+  }
+  .t-body-l {
+    @apply text-[clamp(1.125rem,1.5vw,1.375rem)] leading-[1.5] font-body;
+  }
+  .t-body-m {
+    @apply text-[1rem] leading-[1.65] font-body;
+  }
+  .t-body-s {
+    @apply text-[0.875rem] leading-[1.6] font-body;
+  }
+}
