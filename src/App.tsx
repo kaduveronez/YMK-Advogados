@@ -67,11 +67,11 @@ const Navbar = () => {
           </div>
           <button 
             onClick={() => window.open("https://wa.me/5511910801312", "_blank")}
-            className="bg-secondary text-paper px-6 py-2.5 rounded-none t-eyebrow flex items-center gap-2 hover:bg-secondary/90 transition-all group"
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-none t-eyebrow flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(220,38,38,0.5)] animate-pulse group"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-paper opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-paper"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
             </span>
             Emergência 24h
           </button>
@@ -117,7 +117,7 @@ const Navbar = () => {
             <div className="mt-auto pt-16 flex flex-col gap-6">
               <button 
                 onClick={() => window.open("https://wa.me/5511910801312", "_blank")}
-                className="w-full bg-secondary text-paper py-6 text-xl font-display flex items-center justify-center gap-3"
+                className="w-full bg-red-600 hover:bg-red-700 text-white py-6 text-xl font-display flex items-center justify-center gap-3 shadow-[0_0_15px_rgba(220,38,38,0.5)] animate-pulse transition-all"
               >
                 Emergência 24h
               </button>
@@ -157,37 +157,14 @@ const Hero = () => {
           <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[40vw] h-[40vw] bg-secondary/5 rounded-full blur-[100px] pointer-events-none animate-pulse" />
 
           <motion.h1 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="t-display-xl mb-12 relative"
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="t-display-xl mb-12 relative z-10"
           >
-            <motion.span 
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-block relative z-10"
-            >
-              Direito com precisão,
-            </motion.span>
-            <br />
-            <motion.span 
-              initial={{ x: 100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="italic pl-[10%] inline-block text-secondary relative z-20"
-            >
-              estratégia e propósito.
-            </motion.span>
-            
-            <motion.div 
-              animate={{ 
-                x: [0, 50, 0],
-                y: [0, -30, 0],
-              }}
-              transition={{ duration: 15, repeat: Infinity }}
-              className="absolute -right-20 top-0 w-40 h-40 border border-secondary/10 rounded-full hidden lg:block"
-            />
+            Direito com precisão, <br />
+            <span className="italic">estratégia</span> e propósito.
           </motion.h1>
 
           <motion.p 
@@ -533,6 +510,15 @@ const Team = () => {
             className="group"
           >
             <div className="h-px w-full bg-line mb-12 transition-colors duration-500 group-hover:bg-tertiary" />
+            <div className="aspect-[4/5] bg-primary/30 mb-8 overflow-hidden relative">
+              <img 
+                src="/miguel.jpg" 
+                alt="Miguel Kupermann" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-primary/20 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-0" />
+            </div>
             <h3 className="text-4xl font-display mb-2">Miguel Kupermann</h3>
             <div className="t-eyebrow text-tertiary mb-8">Sócio · OAB/SP</div>
             <p className="t-body-m text-text-muted mb-12 italic leading-relaxed">
@@ -551,6 +537,15 @@ const Team = () => {
             className="group"
           >
             <div className="h-px w-full bg-line mb-12 transition-colors duration-500 group-hover:bg-tertiary" />
+            <div className="aspect-[4/5] bg-primary/30 mb-8 overflow-hidden relative">
+              <img 
+                src="/matheus.jpg" 
+                alt="Matheus Yasbeck" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-primary/20 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-0" />
+            </div>
             <h3 className="text-4xl font-display mb-2">Matheus Yasbeck</h3>
             <div className="t-eyebrow text-tertiary mb-8">Advogado · OAB/SP</div>
             <p className="t-body-m text-text-muted mb-12 italic leading-relaxed">
@@ -608,7 +603,7 @@ const Emergency = () => {
               whileHover={{ scale: 1.02 }}
               viewport={{ once: true }}
               onClick={() => window.open("https://wa.me/5511910801312", "_blank")}
-              className="w-full lg:w-auto px-12 py-8 bg-secondary text-paper text-2xl font-display flex items-center justify-center gap-4 hover:bg-secondary/90 shadow-2xl transition-all group"
+              className="w-full lg:w-auto px-12 py-8 bg-red-600 hover:bg-red-700 text-white text-2xl font-display flex items-center justify-center gap-4 transition-all shadow-[0_0_30px_rgba(220,38,38,0.6)] animate-pulse group"
             >
               <Phone size={28} />
               Falar com plantão agora
@@ -882,7 +877,7 @@ const StickyActions = () => {
       <div className="fixed bottom-0 left-0 w-full z-40 flex md:hidden border-t border-line">
         <button 
           onClick={() => window.open("https://wa.me/5511910801312", "_blank")}
-          className="flex-1 bg-secondary text-paper py-5 t-eyebrow flex items-center justify-center gap-2"
+          className="flex-1 bg-red-600 text-white py-5 t-eyebrow flex items-center justify-center gap-2 animate-pulse shadow-[0_-5px_15px_rgba(220,38,38,0.3)] transition-colors hover:bg-red-700"
         >
           <Phone size={18} />
           Urgência 24h
